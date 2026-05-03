@@ -1,0 +1,52 @@
+<!-- FLOAT BUTTON -->
+<div (click)="toggleChat()"
+     class="fixed bottom-5 left-5 bg-green-500 text-white w-14 h-14 flex items-center justify-center rounded-full shadow-lg cursor-pointer z-50 hover:scale-105 transition">
+  💬
+</div>
+
+<!-- CHAT WINDOW -->
+<div *ngIf="isChatOpen"
+     class="fixed bottom-20 left-5 w-80 bg-white shadow-2xl rounded-2xl overflow-hidden z-50 flex flex-col">
+
+  <!-- HEADER -->
+  <div class="bg-green-500 text-white p-3 flex items-center gap-3">
+    <img src="assets/logo/nexora-logo.svg" class="w-8 h-8 rounded-full">
+    <div>
+      <p class="font-semibold">Nexora Support</p>
+      <p class="text-xs">Online</p>
+    </div>
+    <span class="ml-auto cursor-pointer" (click)="toggleChat()">✖</span>
+  </div>
+
+  <!-- CHAT BODY -->
+  <div class="p-3 h-64 overflow-y-auto bg-gray-100 space-y-2">
+
+    <!-- BOT MESSAGE -->
+    <div class="bg-white p-2 rounded-lg max-w-[80%] shadow">
+      Hi 👋 Welcome to Nexora! How can I help you?
+    </div>
+
+    <!-- USER MESSAGE -->
+    <div *ngFor="let msg of messages"
+         [ngClass]="msg.type === 'user' ? 'bg-green-500 text-white ml-auto' : 'bg-white text-black'"
+         class="p-2 rounded-lg max-w-[80%] shadow">
+      {{ msg.text }}
+    </div>
+
+  </div>
+
+  <!-- INPUT AREA -->
+  <div class="p-2 flex gap-2 border-t">
+
+    <input [(ngModel)]="userInput"
+           placeholder="Type a message..."
+           class="flex-1 border rounded-full px-4 py-2 outline-none">
+
+    <button (click)="sendMessage()"
+            class="bg-green-500 text-white px-4 py-2 rounded-full">
+      ➤
+    </button>
+
+  </div>
+
+</div>
