@@ -1,25 +1,38 @@
-<nav class="fixed w-full bg-white shadow z-50">
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur shadow z-50">
 
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 h-16">
 
     <!-- LOGO -->
-  <div class="flex items-center h-full">
-  <img src="assets/logo/nexonalogo.png"
-       alt="Nexora Tech"
-       class="h-12 w-auto object-contain">
-        <h2>Nexora</h2>
+    <div class="flex items-center gap-2">
+      <img src="assets/logo/nexonalogo.png"
+           alt="Nexora Tech"
+           class="h-10 md:h-12 w-auto object-contain">
+
+      <span class="text-lg md:text-xl font-bold text-blue-600">
+        Nexora
+      </span>
     </div>
 
-    <!-- MENU -->
-    <div class="hidden md:flex gap-6 items-center">
+    <!-- HAMBURGER BUTTON -->
+    <button (click)="toggleMenu()"
+            class="md:hidden text-3xl font-bold focus:outline-none">
 
-      <a routerLink="/" class="hover:text-blue-600">Home</a>
-      <a routerLink="/securedeck" class="hover:text-blue-600">SecureDeck</a>
-      <a routerLink="/services" class="hover:text-blue-600">Services</a>
-      <a routerLink="/pricing" class="hover:text-blue-600">Pricing</a>
-      <a routerLink="/contact" class="hover:text-blue-600">Contact</a>
+      <span *ngIf="!isMenuOpen">☰</span>
+      <span *ngIf="isMenuOpen">✖</span>
 
-      <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+    </button>
+
+    <!-- DESKTOP MENU -->
+    <div class="hidden md:flex gap-8 items-center font-medium">
+
+      <a routerLink="/" class="hover:text-blue-600 transition">Home</a>
+      <a routerLink="/securedeck" class="hover:text-blue-600 transition">SecureDeck</a>
+      <a routerLink="/services" class="hover:text-blue-600 transition">Services</a>
+      <a routerLink="/pricing" class="hover:text-blue-600 transition">Pricing</a>
+      <a routerLink="/contact" class="hover:text-blue-600 transition">Contact</a>
+
+      <!-- CTA -->
+      <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
         Book Demo
       </button>
 
@@ -27,4 +40,21 @@
 
   </div>
 
-</nav>  
+  <!-- MOBILE MENU -->
+  <div *ngIf="isMenuOpen"
+       class="md:hidden bg-white border-t px-4 py-4 space-y-3 shadow">
+
+    <a routerLink="/" (click)="closeMenu()" class="block py-2 hover:text-blue-600">Home</a>
+    <a routerLink="/securedeck" (click)="closeMenu()" class="block py-2 hover:text-blue-600">SecureDeck</a>
+    <a routerLink="/services" (click)="closeMenu()" class="block py-2 hover:text-blue-600">Services</a>
+    <a routerLink="/pricing" (click)="closeMenu()" class="block py-2 hover:text-blue-600">Pricing</a>
+    <a routerLink="/contact" (click)="closeMenu()" class="block py-2 hover:text-blue-600">Contact</a>
+
+    <!-- MOBILE CTA -->
+    <button class="w-full bg-blue-600 text-white py-2 rounded-lg mt-2">
+      Book Demo
+    </button>
+
+  </div>
+
+</nav>
