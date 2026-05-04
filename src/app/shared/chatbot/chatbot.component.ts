@@ -53,7 +53,7 @@ export class ChatbotComponent implements OnInit {
       // OPTIONAL: Auto open WhatsApp after lead capture
       setTimeout(() => {
         const msg = `Hi, my name is ${this.userData.name} (${this.userData.mobile}). I am interested in your services.`;
-        window.open(`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`, '_blank');
+        window.open(`https://wa.me/919309517229?text=${encodeURIComponent(msg)}`, '_blank');
       }, 1500);
     }
 
@@ -81,7 +81,7 @@ export class ChatbotComponent implements OnInit {
       this.botReply('Opening WhatsApp for quick support...');
 
       setTimeout(() => {
-        window.open('https://wa.me/919876543210', '_blank');
+        window.open('https://wa.me/919309517229', '_blank');
       }, 1000);
     }
 
